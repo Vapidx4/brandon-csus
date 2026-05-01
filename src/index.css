@@ -410,6 +410,42 @@ a:hover { color: rgb(229, 255, 0); text-shadow: 1px 1px 1px rgb(0, 114, 38); }
   100% { filter: drop-shadow(0 0 14px rgba(229,255,0,1)) drop-shadow(0 0 28px rgba(175,216,81,0.7)); }
 }
 
+/* ── Splash screen ── */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(7, 7, 15, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-box {
+  display: inline-block;
+  min-width: 260px;
+}
+
+.splash-enter-btn {
+  background: linear-gradient(to right, rgb(62,22,88), rgb(155,99,155));
+  color: white;
+  border: 2px outset rgb(124,124,124);
+  padding: 8px 24px;
+  font-family: 'courier new', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.splash-enter-btn:hover {
+  filter: brightness(1.2);
+}
+
+.splash-enter-btn:active {
+  border-style: inset;
+}
+
 /* ── Background music player ── */
 .music-player {
   position: fixed;
@@ -418,15 +454,16 @@ a:hover { color: rgb(229, 255, 0); text-shadow: 1px 1px 1px rgb(0, 114, 38); }
   z-index: 1000;
   background: rgb(192, 192, 192);
   border: 1px outset rgb(124, 124, 124);
-  width: 140px;
+  width: 160px;
+  overflow: hidden;
   font-family: 'courier new', monospace;
 }
 
 .music-mute-btn {
-  width: 36px;
-  height: 32px;
+  width: 28px;
+  height: 24px;
   border: 2px outset rgb(124, 124, 124);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
   cursor: pointer;
   flex-shrink: 0;

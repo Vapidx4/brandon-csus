@@ -153,29 +153,43 @@ function BlinkBadge({ label, bg = 'rgb(255,55,55)', fg = 'white' }) {
   )
 }
 
+/* ── Splash screen (satisfies browser autoplay gesture requirement) ── */
+function SplashScreen({ onEnter }) {
+  return (
+    <div className="splash-overlay">
+      <div className="splash-box winbody">
+        <div className="winbar" style={{ margin: 0 }}>
+          <span className="winbar-title">📁 welcome.exe</span>
+          <span className="winbar-btn">_</span>
+          <span className="winbar-btn">□</span>
+        </div>
+        <div className="wincontent" style={{ padding: '24px 32px', textAlign: 'center' }}>
+          {/* <div className="wobble neon-glow text-5xl mb-3" style={{ display: 'inline-block' }}></div> */}
+          <div className="waves select-none mb-3" style={{ fontSize: 'clamp(1rem,4vw,2rem)' }}>
+            {'VP-TECHNOLOGY'.split('').map((ch, i) => (
+              <span key={i} style={{ '--i': i, fontFamily: 'Righteous, sans-serif', WebkitTextStrokeWidth: '2px', WebkitTextStrokeColor: 'black', background: 'linear-gradient(rgb(0,146,151), rgb(227,255,126) 60%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block', animation: 'waves 1s infinite', animationDelay: `calc(0.1s * ${i})` }}>{ch}</span>
+            ))}
+          </div>
+          <p className="abttext mb-4" style={{ display: 'block' }}>brandon 4 vp-tech !!</p>
+          <button onClick={onEnter} className="splash-enter-btn">
+            ▶ ENTER SITE
+          </button>
+          {/* <p style={{ fontSize: 9, color: 'rgb(100,100,100)', marginTop: 10 }}>
+            🔊 music will play on entry
+          </p> */}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /* ── Background music player ── */
-function BgMusic() {
+function BgMusic({ audioRef }) {
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(false)
-  const audioRef = useRef(null)
 
   useEffect(() => {
-    const tryPlay = () => {
-      audioRef.current.play().then(() => setPlaying(true)).catch(() => {})
-      window.removeEventListener('click', tryPlay)
-      window.removeEventListener('keydown', tryPlay)
-    }
-    const auto = audioRef.current.play()
-    if (auto !== undefined) {
-      auto.then(() => setPlaying(true)).catch(() => {
-        window.addEventListener('click', tryPlay)
-        window.addEventListener('keydown', tryPlay)
-      })
-    }
-    return () => {
-      window.removeEventListener('click', tryPlay)
-      window.removeEventListener('keydown', tryPlay)
-    }
+    audioRef.current.play().then(() => setPlaying(true)).catch(() => {})
   }, [])
 
   const toggleMute = () => {
@@ -185,7 +199,6 @@ function BgMusic() {
 
   return (
     <div className="music-player">
-      <audio ref={audioRef} src="/Never-Gonna-Give-You-Up-3.mp3" loop />
       <div className="winbar" style={{ margin: 0, padding: '0 4px' }}>
         <span className="winbar-title">🎵 bg music</span>
       </div>
@@ -195,8 +208,8 @@ function BgMusic() {
         </button>
         <div style={{ flex: 1 }}>
           <div className="motdmarquee">
-            <span className="motdmarquee-inner" style={{ fontSize: 9, color: playing ? (muted ? 'rgb(180,180,180)' : 'rgb(229,255,0)') : 'rgb(100,100,100)', whiteSpace: 'nowrap' }}>
-              {playing ? (muted ? '— muted —' : '♫ never gonna give you up ♫') : '♫ loading...'}
+            <span className="motdmarquee-inner" style={{ fontSize: 9, color: muted ? 'rgb(180,180,180)' : 'rgb(229,255,0)', whiteSpace: 'nowrap' }}>
+              {muted ? '— muted —' : '♫ never gonna give you up ♫'}
             </span>
           </div>
           <div style={{ marginTop: 3, background: 'rgb(60,60,60)', height: 3, borderRadius: 1 }}>
@@ -275,12 +288,21 @@ const LINKS = [
 ]
 
 export default function App() {
+  const [entered, setEntered] = useState(false)
+  const audioRef = useRef(null)
+
+  const handleEnter = () => {
+    setEntered(true)
+  }
+
   return (
     <div className="text-center justify-center py-6">
+      <audio ref={audioRef} src="/Never-Gonna-Give-You-Up-3.mp3" loop />
+      {!entered && <SplashScreen onEnter={handleEnter} />}
       <StarField />
       <SparkleTrail />
       <ShootingStars />
-      <BgMusic />
+      {entered && <BgMusic audioRef={audioRef} />}
       <div className="mx-auto text-left px-3 sm:px-8 max-w-5xl" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* ── Header ── */}
