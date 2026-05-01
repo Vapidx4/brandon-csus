@@ -208,7 +208,7 @@ function BgMusic({ audioRef }) {
         </button>
         <div style={{ flex: 1 }}>
           <div className="motdmarquee">
-            <span className="motdmarquee-inner" style={{ fontSize: 9, color: muted ? 'rgb(180,180,180)' : 'rgb(229,255,0)', whiteSpace: 'nowrap' }}>
+            <span className="motdmarquee-inner" style={{ fontSize: 9, color: muted ? 'rgb(180,180,180)' : 'rgb(220,30,30)', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
               {muted ? '— muted —' : '♫ never gonna give you up ♫'}
             </span>
           </div>
@@ -367,9 +367,6 @@ export default function App() {
                   this site's design is a little tribute to the old geocities sites from the late 90s / early 2000s! i wanted to capture a nostalgic feel, while showcasing how i could be a good candidate for vp-technology
                 </p>
                 <img className='h-80 mx-auto' src="https://i.imgflip.com/aqmjls.jpg" title="made at imgflip.com"/>
-                <p className="text-[0.8em] text-[rgb(80,80,80)] mt-2">
-                  ⚠️ this site is not configured for mobile - please view on desktop!!
-                </p>
               </div>
             </Win95>
 
