@@ -533,7 +533,7 @@ export default function App() {
                     <b>📖 Technical guides:</b> I would create and maintain step-by-step guides for setup, deployment, and recurring workflows so future members can onboard faster and keep projects running smoothly.
                   </div>
                   <p className="text-[0.75em] mt-2 text-[rgb(80,80,80)]">
-                    goal: make the tech team easier to join, easier to organize, and more useful to the whole club.
+                    goal: build up a well-organized, communicative, and supportive tech team that can execute cool projects, material, and events for the CSUS community.
                   </p>
                 </div>
               </Win95>
