@@ -1,0 +1,480 @@
+@import "tailwindcss";
+
+/* ── Global ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* margin: 0; */
+  /* padding: 0; */
+  font-family: 'courier new', monospace;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  background: #07070f;
+  min-height: 100vh;
+  cursor: url('/cursor.svg') 0 0, auto;
+}
+
+/* ── Twinkling stars ── */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.08; transform: scale(0.7); }
+  100% { opacity: 1;    transform: scale(1.3); }
+}
+
+#root { width: 100%; min-height: 100vh; }
+
+a { color: rgb(0, 0, 180); text-decoration: underline; }
+a:hover { color: rgb(229, 255, 0); text-shadow: 1px 1px 1px rgb(0, 114, 38); }
+
+/* ── Wavy title ── */
+.waves span {
+  font-family: 'Righteous', sans-serif;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  position: relative;
+  display: inline-block;
+  animation: waves 1s infinite;
+  animation-delay: calc(0.1s * var(--i));
+  font-size: clamp(2rem, 10vw, 72px);
+  background: linear-gradient(rgb(0, 146, 151), rgb(227, 255, 126) 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes waves {
+  0%, 40%, 100% { transform: translateY(0); }
+  20%            { transform: translateY(-12px); }
+}
+
+/* ── Logo wobble ── */
+.wobble { animation: wobbler 6s infinite ease-in-out; display: inline-block; }
+
+@keyframes wobbler {
+  0%   { transform: rotate(-5deg); }
+  50%  { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+/* ── Rainbow cycle ── */
+.rainbowanim { animation: rainbow_animation 3s ease-in-out infinite; }
+
+@keyframes rainbow_animation {
+  0%   { color: rgb(255, 67, 67); }
+  20%  { color: rgb(255, 227, 67); }
+  40%  { color: rgb(67, 255, 130); }
+  60%  { color: rgb(67, 155, 255); }
+  80%  { color: rgb(149, 67, 255); }
+  100% { color: rgb(255, 67, 155); }
+}
+
+/* ── Flash / saturate pulse ── */
+.anim_flash { animation: flash 1s alternate-reverse infinite; }
+
+@keyframes flash {
+  0%   { filter: saturate(0%); }
+  100% { filter: saturate(100%); }
+}
+
+/* ── Windows 95 UI ── */
+.winbody {
+  background-color: rgb(192, 192, 192);
+  border: 1px outset rgb(124, 124, 124);
+  display: inline-block;
+}
+
+.wincontent {
+  border: 1px inset rgb(158, 158, 158);
+  margin: 2px;
+}
+
+.winbar {
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  height: 18px;
+  background-image: linear-gradient(to right, rgb(68, 100, 77), rgb(63, 89, 114));
+  padding: 0 3px;
+}
+
+.winbar2 {
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  height: 18px;
+  background-image: linear-gradient(to right, rgb(83, 145, 139), rgb(112, 179, 120));
+  padding: 0 3px;
+}
+
+.winbar-title {
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  flex: 1;
+  user-select: none;
+}
+
+.winbar-btn {
+  width: 14px;
+  height: 12px;
+  background-color: rgb(192, 192, 192);
+  border: 1px outset rgb(124, 124, 124);
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-left: 1px;
+  user-select: none;
+  cursor: default;
+}
+
+/* ── Section headers (reviewbar style) ── */
+.reviewbar {
+  display: block;
+  background-image: linear-gradient(to right, rgb(155, 99, 155), rgb(62, 22, 88));
+  font-size: 1.1em;
+  padding: 4px 8px;
+  text-shadow: 2px 2px 1px black;
+  border-radius: 4px;
+  box-shadow: 0px 4px 1px black;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* ── List panel styles ── */
+.listindex {
+  display: block;
+  background-image: linear-gradient(to right, rgb(52, 162, 196), rgb(0, 0, 0));
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+.listindex2 {
+  display: block;
+  background-image: linear-gradient(to right, rgb(175, 216, 81), rgb(39, 122, 53));
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+.listans {
+  display: block;
+  background-image: linear-gradient(to right, rgb(35, 28, 68), rgb(9, 0, 48));
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+/* ── Nav links ── */
+.navlink { display: inline-block; text-decoration: none; text-align: center; margin: 4px; }
+.navtext { color: white; font-size: 15px; text-shadow: 1px 1px 1px rgb(109, 44, 170); }
+.navtext:hover { color: rgb(229, 255, 0); text-shadow: 1px 1px 1px rgb(0, 114, 38); text-decoration: underline; }
+
+/* ── Info text ── */
+.abttext { display: inline-block; font-size: 0.82em; padding: 3px; color: white; text-shadow: 1px 1px 1px rgb(119, 0, 255); }
+
+/* ── 88x31 buttons ── */
+.butt88 {
+  display: inline-block;
+  width: 88px;
+  height: 31px;
+  border: 1px solid rgba(0,0,0,0.4);
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: 9px;
+  text-align: center;
+  line-height: 1.2;
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer;
+}
+
+.butt88:hover { opacity: 0.85; }
+
+/* ── Marquee ── */
+.motdmarquee { height: 20px; overflow: hidden; position: relative; white-space: nowrap; }
+.motdmarquee-inner {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollleft 25s linear infinite;
+}
+
+@keyframes scrollleft {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ── Extra visual effects ── */
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.soft-glow {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 18px rgba(175, 216, 81, 0.18);
+}
+
+.media-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.media-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+  transform: translateX(-120%);
+  animation: shimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  45% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  mix-blend-mode: soft-light;
+}
+
+.pulse-border {
+  animation: pulseBorder 3.5s ease-in-out infinite;
+}
+
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(175,216,81,0.25), 0 0 10px rgba(175,216,81,0.15); }
+  50% { box-shadow: 0 0 0 1px rgba(100,200,255,0.35), 0 0 18px rgba(100,200,255,0.22); }
+}
+
+/* ── Sparkle cursor trail ── */
+.sparkle {
+  position: fixed;
+  font-size: 13px;
+  pointer-events: none;
+  animation: sparkle-out 0.7s ease-out forwards;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  user-select: none;
+  line-height: 1;
+}
+
+@keyframes sparkle-out {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+  100% { opacity: 0; transform: translate(-50%, -90%) scale(0); }
+}
+
+/* ── Shooting stars ── */
+.shooting-star {
+  position: absolute;
+  left: -5%;
+  height: 1px;
+  width: 0;
+  background: linear-gradient(to right, transparent, white 40%, rgba(255,255,255,0.6));
+  animation: shoot-across ease-out infinite;
+}
+
+@keyframes shoot-across {
+  0%   { width: 0;    opacity: 0;   transform: translateX(0)     translateY(0); }
+  8%   { width: 70px; opacity: 1; }
+  60%  { width: 70px; opacity: 0.7; }
+  100% { width: 0;    opacity: 0;   transform: translateX(110vw) translateY(25vh); }
+}
+
+/* ── Matrix rain (winamp bg) ── */
+.matrix-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.matrix-col {
+  position: absolute;
+  top: -120%;
+  writing-mode: vertical-rl;
+  font-size: 9px;
+  color: rgb(0, 255, 70);
+  animation: matrix-fall linear infinite;
+  white-space: nowrap;
+  letter-spacing: 3px;
+  opacity: 0.18;
+}
+
+@keyframes matrix-fall {
+  0%   { top: -120%; }
+  100% { top: 120%; }
+}
+
+/* ── Glitch animation ── */
+.glitch-anim {
+  animation: glitch 7s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0%, 87%, 100% { transform: none; filter: none; }
+  89% { transform: skewX(-7deg) translateX(3px);  filter: hue-rotate(90deg) saturate(180%); }
+  91% { transform: skewX(5deg)  translateX(-4px); filter: hue-rotate(0deg); }
+  93% { transform: skewX(-3deg) translateX(2px);  filter: hue-rotate(180deg) saturate(150%); }
+  95% { transform: none; filter: none; }
+}
+
+/* ── Blink ── */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Typewriter cursor ── */
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+  font-weight: bold;
+  color: rgb(62, 22, 88);
+  margin-left: 1px;
+}
+
+/* ── Online dot indicator ── */
+.online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(100, 255, 100);
+  vertical-align: middle;
+  animation: online-pulse 2s ease-in-out infinite;
+}
+
+@keyframes online-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(100, 255, 100, 0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(100, 255, 100, 0); }
+}
+
+/* ── Heartbeat ── */
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  60% { transform: scale(1); }
+}
+
+/* ── Neon glow (emoji/element) ── */
+.neon-glow {
+  animation: neon-pulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+  0%   { filter: drop-shadow(0 0 4px rgba(175,216,81,0.9)); }
+  100% { filter: drop-shadow(0 0 14px rgba(229,255,0,1)) drop-shadow(0 0 28px rgba(175,216,81,0.7)); }
+}
+
+/* ── Background music player ── */
+.music-player {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgb(192, 192, 192);
+  border: 1px outset rgb(124, 124, 124);
+  width: 140px;
+  font-family: 'courier new', monospace;
+}
+
+.music-mute-btn {
+  width: 36px;
+  height: 32px;
+  border: 2px outset rgb(124, 124, 124);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.15s;
+}
+
+.music-mute-btn:active {
+  border-style: inset;
+}
+
+.music-unmuted {
+  background: rgb(192, 192, 192);
+  animation: mute-glow 2.5s ease-in-out infinite alternate;
+}
+
+.music-muted {
+  background: rgb(160, 160, 160);
+  filter: grayscale(1) brightness(0.8);
+}
+
+@keyframes mute-glow {
+  0%   { box-shadow: 0 0 4px rgba(175,216,81,0.6); }
+  100% { box-shadow: 0 0 10px rgba(229,255,0,0.9), 0 0 2px rgba(175,216,81,1); }
+}
+
+.music-bar {
+  height: 3px;
+  border-radius: 1px;
+  background: linear-gradient(to right, rgb(62,22,88), rgb(229,255,0));
+  animation: music-progress 180s linear infinite;
+  width: 0%;
+}
+
+@keyframes music-progress {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ── Winamp progress bar animation ── */
+.winamp-progress {
+  width: 35%;
+  animation: winamp-seek 90s linear infinite;
+}
+
+@keyframes winamp-seek {
+  0%   { width: 35%; }
+  100% { width: 100%; }
+}
